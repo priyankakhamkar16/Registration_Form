@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #4070f4;
+
+        }
+        .resgistration-form {
+            position: relative;
+            max-width: 600px;
+            max-height: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 34px;
+            border-radius: 6px;
+            box-shadow:  0 5px 10px rgba(0, 0, 0, 0.2);
+
+        }
+        .resgistration-form h2 {
+            position: relative;
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        .resgistration-form h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 28px;
+            border-radius: 12px;
+        }
+        .resgistration-form form {
+            margin-top: 30px;
+        }
+        .resgistration-form form .input-box {
+            height: 42px;
+            margin: 40px 0px;
+          
+        } 
+        form .input-box input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            padding: 15px 10px;
+            font-size: 17px;
+            font-weight: 400;
+            color: #333;
+            border: 1.5px solid #C7BEBE;
+            border-bottom-width: 2.5px; 
+            border-radius: 6px;
+            transition:  all 0.3s ease;
+        }
+        .input-box input:focus , 
+        .input-box input:valid {
+            border-color:  #4070f4;
+        }
+        .resgistration-form button {
+            font-size: 18px;
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            background-color: #4070f4;
+        }
+         .resgistration-form button:hover{
+            background: #0e4bf1;
+        }
+        .resgistration-form span {
+            color: red;
+        }
+        
+
+
+
+    </style>
+</head>
+<body>
+    <div class="resgistration-form">
+        <form onsubmit="return validation()">
+            <h2>Registration Form</h2>
+            <div class="input-box">
+            <p>Full Name</p>
+            <input type="text" name="fullname" placeholder="Full Name" id="fullname">
+            <span id="fullnameerror"></span>
+            </div>
+            <div class="input-box">
+            <p>Mobile No</p>
+            <input type="number" name="mobileno" placeholder="Mobile No" id="mobileno">
+            <span id="mobilenoerror"></span>
+            </div>
+            <div class="input-box">
+            <p>Email</p>
+            <input type="email" name="email" placeholder="Email" id="email">
+            <span id="emailerror"></span>
+            </div>
+            <div class="input-box">
+            <p>User Name</p>
+            <input type="text" name="username" placeholder="User Name" id="username">
+            <span id="usernameerror"></span>
+            </div>
+            <div class="input-box">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Password" id="password">
+            <span id="passworderror"></span>
+            </div>
+            <button type="submit" onclick="validation()">Submit</button>
+    
+
+
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function validation() {
+        var fullname = document.getElementById('fullname').value;
+        var mobileno = document.getElementById('mobileno').value;
+        var email = document.getElementById('email').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        var fullnamecheck = /^[A-Za-z. ]{5,20}$/ ;
+        var mobilenocheck = /^[789][0-9]{9}$/;
+        var emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+        var usernamecheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+        var passwordcheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+
+        if(fullnamecheck.test(fullname)) {
+            document.getElementById('fullnameerror').value;
+        } else {
+            document.getElementById('fullnameerror').value;
+            alert("Enter Correct Full Name")
+            return false;
+        }
+
+        if(mobilenocheck.test(mobileno)) {
+            document.getElementById('mobilenoerror').value;
+        } else {
+            document.getElementById('mobilenoerror').value;
+            alert("Mobile Number is Invalid")
+            return false;
+        }
+
+        if(emailcheck.test(email)) {
+            document.getElementById('emailerror').value;
+        } else {
+            document.getElementById('emailerror').value;
+            alert("Enter Valid Email Id")
+            return false;
+        }
+
+        if(usernamecheck.test(username)) {
+            document.getElementById('usernameerror').value;
+        } else {
+            document.getElementById('usernameerror').value;
+            alert("Enter Valid Username")
+            return false;
+        }
+
+        if(passwordcheck.test(password)) {
+            document.getElementById('passworderror').value;
+        } else {
+            document.getElementById('passworderror').value;
+            alert("Enter Valid Password")
+            return false;
+        }
+        }
+    </script>
+    
+</body>
+</html>
